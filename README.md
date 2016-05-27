@@ -34,12 +34,12 @@ First, set up the specification for the config file and add your variable defini
     $config->add('ParseConfig\TypeBoolean', "verbose");
     $config->add('ParseConfig\TypeString', "log_file_path", "/^[a-zA-Z0-9._\/-]+$/");
 
-Then, create a Parser instance and use it to parse():
+Then, create a Parser instance and use it to `parse()`:
 
     $configParser = new Parser($config, $configFile);
     $configParser->parse();
 
-Now, each variable's value is accessible with getValueOf():
+Now, each variable's value is accessible with `getValueOf()`:
 
     print "host is " . $config->getValueOf("host") . "\n";
 
@@ -89,6 +89,6 @@ own best practices and coding/design principles.
 - review passing of Variables "through" Spec
 
 ## Author
-Hey - I'm Brett. I like coding and solving problems. Questions?
+Hey - I'm Brett. I like coding and solving problems. Questions? Comments? Suggestions? I'd love to hear them.
 
 brett.schellenberg@gmail.com
