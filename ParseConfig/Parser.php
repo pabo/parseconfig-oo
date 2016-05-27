@@ -36,6 +36,9 @@ class Parser {
 					catch (\InvalidArgumentException $e) {
 						print "Warning: " . $e->getMessage() . "\n";
 					}
+					catch (\OutOfBoundsException $e) {
+						print "Warning: " . $e->getMessage() . "\n";
+					}
 				}
 			}
 			fclose($handle);

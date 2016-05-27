@@ -23,11 +23,10 @@ class Variable {
 		return $this->value;
 	}
 
-	# we know the type, and have a value to try to stuff in
-	# 1. check that the value fits the type
-	# 2. check that the extra regex matches
 	public function trySet($value) {
-		if ($this->type->isValid($value) && $this->matches($value)) {
+		# check that the value isValid for the type
+		# AND check that the value isValid for this specific Variable's validator
+		if ($this->type->isValid($value) && $this->isValid($value)) {
 			$this->value = $this->type->cast($value);
 		}
 		else {
@@ -35,7 +34,8 @@ class Variable {
 		}
 	}
 
-	public function matches($value) {
+	public function isValid($value) {
+		# This value isValid if we have no regex, or if we have a regex and it matches
 		return (is_null($this->regex) || preg_match($this->regex, $value));
 	}
 }

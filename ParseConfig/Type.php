@@ -29,7 +29,7 @@ class TypeNumber extends Type {
 	}
 
 	public function cast($value) {
-		return $value;
+		return 0 + $value;
 	}
 }
 
