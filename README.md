@@ -84,7 +84,9 @@ own best practices and coding/design principles.
     send_notifications = yes
 
 ##TODO
+
 - make Types static? really only need one instance of each.
+- review passing of Variables "through" Spec
 - 
 
 ## Author

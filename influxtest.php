@@ -18,10 +18,12 @@ $config->add('ParseConfig\TypeBoolean', "debug_mode");
 $config->add('ParseConfig\TypeString', "log_file_path", "/^[a-zA-Z0-9._\/-]+$/");
 $config->add('ParseConfig\TypeBoolean', "send_notifications");
 
+# do the thing!
 $configParser = new Parser($config, $configFile);
 $configParser->parse();
 
-var_dump($config);
+# different ways of seeing the results
+#var_dump($config);
 $config->dumpAllVariables();
 #print "host is " . $config->getValueOf("host") . "\n";
 
