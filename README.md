@@ -17,13 +17,13 @@ If a key is given more than once in the configuration file, the value in the las
 
 Configuration variables are whitelisted and their names are case sensitive.
 
-There are three supported types:
- - TypeString - any string of text matching `/^[a-zA-Z0-9_.\/-]+$/` (Note that spaces are not included.)
- - TypeNumber - any ints or floats. a string matching `/^\d*\.?\d+$/`, which is then cast to an int or float.
- - TypeBoolean - yes/no, on/off, true/false. a string matching `/^(yes|no|true|false|on|off)$/` which is then cast to a bool.
+There are three supported types in the `ParseConfig` namespace:
+ - `TypeString` - any string of text matching `/^[a-zA-Z0-9_.\/-]+$/` (Note that spaces are not included.)
+ - `TypeNumber` - any ints or floats. a string matching `/^\d*\.?\d+$/`, which is then cast to an int or float.
+ - `TypeBoolean` - yes/no, on/off, true/false. a string matching `/^(yes|no|true|false|on|off)$/` which is then cast to a bool.
 
 ## Example usage:
-Run `php influxtest.php` or `php test.php` for a demonstration. Relevant portions are explained below.
+Run `php influxtest.php` or `php unittest.php` for a demonstration. Relevant portions are explained below.
 
 First, set up the specification for the config file and add your variable definitions (The third argument is an optional regex. This is specific to the variable being defined and in addition to any validation we already do on a per-Type basis.)
 
@@ -84,6 +84,8 @@ own best practices and coding/design principles.
     send_notifications = yes
 
 ##TODO
+- make Types static? really only need one instance of each.
+- 
 
 ## Author
 Hey - I'm Brett. I like coding and solving problems. Questions?

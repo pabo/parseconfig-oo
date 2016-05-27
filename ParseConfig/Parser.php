@@ -1,18 +1,42 @@
 <?php
+/**
+ * @class Parser
+ *
+ * Parses a config file
+ *
+ * @package ParseConfig
+ */
 
 namespace ParseConfig;
 
 include_once 'ParseConfig/Spec.php';
 
 class Parser {
-	private $configSpec;
+	private $spec;
 	private $file;
 
-	public function __construct(Spec $configSpec, $file) {
-		$this->configSpec = $configSpec;
+	/**
+	* new Parser()
+	*
+	* The Parser constructor
+	*
+	* @param Spec $spec - specification of variables to read during parsing
+	* @param string $file - the config file to parse
+	*/
+	public function __construct(Spec $spec, $file) {
+		$this->spec = $spec;
 		$this->file = $file;
 	}
 
+	/**
+	* parse()
+	*
+	* Given a path to a config file and a specification of variables contained in it, parse
+	* the file and store the values of the variables in the spec
+	*
+	* @param Spec $spec - specification of variables to read during parsing
+	* @param string $file - the config file to parse
+	*/
 	public function parse() {
 		if (($handle = fopen($this->file, "r")) !== FALSE) {
 			while (($line = fgets($handle)) !== FALSE) {
@@ -22,6 +46,7 @@ class Parser {
 					continue;
 				}
 
+				# trim trailing whitespace
 				$line = rtrim($line);
 
 				# if the line has an = in it, ignore optional spaces directly on either side and try to parse as name=value
@@ -29,9 +54,9 @@ class Parser {
 					$name = $matches[1];
 					$value = $matches[2];
 
-					#attempt to set the variable to value
+					# attempt to set the variable to value, if the spec allows
 					try {
-						$this->configSpec->getVariableByName($name)->trySet($value);
+						$this->spec->getVariableByName($name)->trySet($value);
 					}
 					catch (\InvalidArgumentException $e) {
 						print "Warning: " . $e->getMessage() . "\n";
@@ -48,16 +73,6 @@ class Parser {
 			throw new \Exception("Error opening file $file");
 		}
 	}
-
-	#unneeded
-	#private function tryParseLine($name, $value) {
-		#$this->configSpec->getVariableByName($name)->trySet($value);
-	#}
-
-	#testing method
-	#public function getSpec() {
-		#return $this->configSpec;
-	#}
 }
 
 ?>
