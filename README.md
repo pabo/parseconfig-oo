@@ -87,7 +87,6 @@ own best practices and coding/design principles.
 
 - make Types static? really only need one instance of each.
 - review passing of Variables "through" Spec
-- 
 
 ## Author
 Hey - I'm Brett. I like coding and solving problems. Questions?
