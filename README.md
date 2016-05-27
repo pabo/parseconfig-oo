@@ -1,4 +1,4 @@
-# Welcome to parseConfig
+# Welcome to ParseConfig
 This is a sample PHP project for a developer position. Please see my other sample repositories as well!
 
 [ParseConfig](#parseconfig)  

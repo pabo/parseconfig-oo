@@ -5,7 +5,7 @@
 namespace ParseConfig;
 include_once 'ParseConfig/Parser.php';
 
-$File = 'test.config';
+$configFile = 'test.config';
 
 $config = new Spec();
 $config->add(new Variable(new TypeBoolean(), "boolean.yesno.yes"));
@@ -41,7 +41,7 @@ $config->add(new Variable(new TypeString(), "spaces.trailing"));
 $config->add(new Variable(new TypeString(), "spaces.lots"));
 $config->add(new Variable(new TypeString(), "spaces.between"));
 
-$parser = new ConfigParser($config, $configFile);
+$parser = new Parser($config, $configFile);
 $parser->parse();
 
 #var_dump($config);

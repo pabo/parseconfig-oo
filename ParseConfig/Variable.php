@@ -38,5 +38,6 @@ class Variable {
 	public function matches($value) {
 		return (is_null($this->regex) || preg_match($this->regex, $value));
 	}
-
 }
+
+?>

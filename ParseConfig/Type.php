@@ -45,3 +45,5 @@ class TypeBoolean extends Type {
 		return (bool) preg_match("/^(yes|on|true)$/", $value);
 	}
 }
+
+?>
